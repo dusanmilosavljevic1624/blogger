@@ -14,12 +14,20 @@ var express = require('express'),
 
 mongoose.connect(configDB.url);
 
+require('./config/passport')(passport);
+
 app.use(morgan('dev')); // Log every request to the console
 app.use(cookieParser()); // Read cookies
 app.use(bodyParser()); // Get information from HTML forms
 
-
 app.set('view engine', 'pug'); // Setting up pug for templateing
+
+
+app.use(session({secret: 'thisisastringwhichishardtoguess'})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
 app.use(express.static('public'));
 require('./app/route')(app);
 
