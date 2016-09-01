@@ -14,12 +14,12 @@ module.exports = (passport) => {
 
   //deserializing the user
   passport.deserializeUser((user, done) => {
-    User.findById(id, (err, user) => {
+    User.findById(user.id, (err, user) => {
       done(err, user);
     });
   });
 
-  passport.use(new LocalStrategy({
+  passport.use('local-register', new LocalStrategy({
     passReqToCallback: true // allows us to pass the entire request to the callback
   }, (req, username, password, done) => {
 
@@ -36,7 +36,7 @@ module.exports = (passport) => {
         }
 
         if(user) {
-          return done(null, false, req.flash('signupMessage', 'That email is already taken.'))
+          return done(null, false, req.flash('registerMessage', 'That username is already taken.'))
         } else {
             // if there is no user with that username
             // create the user
@@ -50,8 +50,8 @@ module.exports = (passport) => {
               if(err) {
                 throw err;
               }
-              return done(null, user);
-            })
+              return done(null, newUser);
+            });
         }
       });
     });

@@ -29,7 +29,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.use(express.static('public'));
-require('./app/route')(app);
+require('./app/route')(app, passport);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}...`);

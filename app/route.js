@@ -1,4 +1,4 @@
-module.exports = function (app) {
+module.exports = function (app, passport) {
 
   app.use('/', require('./routes/root'));
   app.use('/login', require('./routes/login'));
