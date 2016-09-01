@@ -1,7 +1,21 @@
-html(lang=en)
-  head
-    title Login | blogger
-    link(rel="stylesheet", href="css/vendor/bootstrap/bootstrap.min.css")
-    link(rel="stylesheet", href="css/vendor/font-awesome/css/font-awesome.min.css")
-  body
-    h1 Welcome to the login page
+extends ./templates/header.pug
+
+block title
+  title Login | Blogger
+
+block content
+  .container
+    .row
+      .col-xs-12
+        h1.text-center Blogger Login Form
+        .row
+          .col-xs-12.col-md-6.col-md-offset-3
+            form(action="/login", method="post")
+              .form-group
+                label(for="username") Username
+                input.form-control(type="text", name="username", id="username", placeholder="Username")
+              .form-group
+                label(for="password") Password
+                input.form-control(type="password", name="password", id="password", placeholder="Password")
+              .form-group
+                input.btn.btn-primary(type="submit", value="Login")
