@@ -20,7 +20,7 @@ app.use(bodyParser()); // Get information from HTML forms
 
 
 app.set('view engine', 'pug'); // Setting up pug for templateing
-
+app.use(express.static('public'));
 require('./app/route')(app);
 
 app.listen(port, () => {

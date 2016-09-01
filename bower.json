@@ -1,0 +1,21 @@
+{
+  "name": "blogger",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Dusan Milosavljevic <dusan.milosavljevic.1624@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/dusanmilosavljevic1624/blogger",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3"
+  }
+}
