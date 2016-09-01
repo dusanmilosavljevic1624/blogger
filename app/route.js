@@ -1,5 +1,6 @@
 module.exports = function (app) {
 
-  app.get('/', require('./routes/root'));
+  app.use('/', require('./routes/root'));
+  app.use('/login', require('./routes/login'));
 
 };
