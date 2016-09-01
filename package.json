@@ -1,0 +1,20 @@
+{
+  "name": "blogger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dusanmilosavljevic1624/blogger.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dusanmilosavljevic1624/blogger/issues"
+  },
+  "homepage": "https://github.com/dusanmilosavljevic1624/blogger#readme"
+}
