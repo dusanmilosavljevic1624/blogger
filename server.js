@@ -8,4 +8,16 @@ var express = require('express'),
     morgan = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
-    session = require('session');
+    session = require('express-session');
+
+
+app.use(morgan('dev')); // Log every request to the console
+app.use(cookieParser()); // Read cookies
+app.use(bodyParser()); // Get information from HTML forms
+
+
+app.set('view engine', 'pug'); // Setting up pug for templateing
+
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}...`);
+});
