@@ -21,6 +21,8 @@ app.use(bodyParser()); // Get information from HTML forms
 
 app.set('view engine', 'pug'); // Setting up pug for templateing
 
+require('./app/route')(app);
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}...`);
 });
