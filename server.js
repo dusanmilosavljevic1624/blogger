@@ -8,8 +8,11 @@ var express = require('express'),
     morgan = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
-    session = require('express-session');
+    session = require('express-session'),
 
+    configDB = require('./config/database.js');
+
+mongoose.connect(configDB.url);
 
 app.use(morgan('dev')); // Log every request to the console
 app.use(cookieParser()); // Read cookies
