@@ -4,7 +4,11 @@ var express = require('express'),
 
 router.get('/', (req, res) => {
   // render the page and pass in any flash data if it exists
-  res.render('login', req.flash('loginMessage'));
+  if(req.isAuthenticated()) {
+    res.redirect('/posts');
+  } else {
+    res.render('login', req.flash('loginMessage'));
+  }
 });
 
 router.post('/', passport.authenticate('local-login', {

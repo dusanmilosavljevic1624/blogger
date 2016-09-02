@@ -15,7 +15,14 @@ block navigation
           li
             a(href="/users") Users
         ul.nav.navbar-nav.navbar-right
-          li
-            a(href="/profile") Profile
-          li
-            a(href="/logout") Logout
+          - if(currentUser) {
+            li
+              a(href="/profile") Profile
+            li
+              a(href="/logout") Logout
+          - } else {
+            li
+              a(href="/profile") Login
+            li
+              a(href="/logout") Register
+          - }
