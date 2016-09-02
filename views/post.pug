@@ -8,4 +8,13 @@ block navigation
 
 block content
   .container
-    h1= post.title
+    .col-xs-12.col-md-8
+      h1= post.title
+      p= post.content
+    .col-xs-12.col-md-4
+      h2.lead Other Posts by this author:
+      each singlePost in user.posts
+        -if (post.title != singlePost.title) {
+          h3
+            a(href='/posts/' + singlePost.title)= singlePost.title
+        -}

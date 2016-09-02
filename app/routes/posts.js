@@ -15,8 +15,14 @@ router.get('/:title', (req, res) => {
   Post.findOne({'title': req.params.title})
       .populate('_author')
       .exec((err, post) => {
-        console.log(post);
-        res.render('post', {post: post});
+        User.findOne({'_id': post._author._id})
+            .populate('posts')
+            .exec((err, user) => {
+              if(err) {
+                throw err;
+              }
+              res.render('post', {post: post, user: user});
+            })
       });
 });
 
