@@ -8,13 +8,22 @@ block navigation
 
 block content
   .container
-    .col-xs-12.col-md-8
+    .col-xs-12
       h1= post.title
-      p= post.content
-    .col-xs-12.col-md-4
-      h2.lead Other Posts by this author:
-      each singlePost in user.posts
-        -if (post.title != singlePost.title) {
-          h3
-            a(href='/posts/' + singlePost.title)= singlePost.title
-        -}
+      .row
+        .col-xs-12.col-md-8
+          p= post.content
+        .col-xs-12.col-md-4
+          -if (currentUser && currentUser._id.toString() !== user._id.toString()) {
+            p Other Posts by this author:
+            each singlePost in user.posts
+              -if (post.title != singlePost.title) {
+                h3
+                  a(href='/posts/' + singlePost.title)= singlePost.title
+              -}
+          -} else {
+              .well
+                a.btn.btn-danger.btn-block(href="/posts/delete/" + post.title) Delete Post
+                br
+                a.btn.btn-info.btn-block(href="/posts/edit/" + post.title) Edit Post
+          -}

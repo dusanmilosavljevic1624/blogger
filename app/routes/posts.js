@@ -48,4 +48,31 @@ router.post('/new', (req, res) => {
   res.redirect('/posts');
 });
 
+router.get('/delete/:id', (req, res) => {
+  Post.remove({'_id': req.params.id}, (err) => {
+    if(err) {
+      throw err;
+    }
+    res.redirect('/posts');
+  });
+});
+
+router.get('/edit/:title', (req, res) => {
+  Post.findOne({'title': req.params.title}, (err, post) => {
+    if(err) {
+      throw err;
+    }
+    res.render('post-edit', {post: post});
+  });
+});
+
+router.post('/edit/:title', (req, res) => {
+  Post.findOneAndUpdate({'title': req.params.title}, req.body, {new: true}, (err, post) => {
+    if(err) {
+      throw err;
+    }
+    res.redirect('/posts/' + post.title);
+  });
+});
+
 module.exports = router;

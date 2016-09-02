@@ -1,0 +1,21 @@
+extends ./templates/header.pug
+
+block title
+  title Edit Post | Blogger
+
+block navigation
+  include ./templates/navigation.pug
+
+block content
+  .container
+    .row
+      .col-xs-12.col-md-6.col-md-offset-3
+        p= post
+        form(action="/posts/edit/" + post.title, method="post")
+          .form-group
+            label(for="title") Title
+            input.form-control(type="text", name="title", id="title", value=post.title)
+          .form-group
+            label(for="content") Content
+            textarea.form-control(name="content", id="content")= post.content
+          input.btn.btn-primary(type="submit", value="Edit Post")
