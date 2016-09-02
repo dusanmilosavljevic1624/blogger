@@ -5,6 +5,7 @@ module.exports = function (app, passport) {
   app.use('/register', require('./routes/register'));
   app.use('/profile', isLoggedIn, require('./routes/profile'));
   app.use('/posts', require('./routes/posts'));
+  app.use('/users', require('./routes/users'));
 
   function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){

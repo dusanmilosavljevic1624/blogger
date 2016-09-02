@@ -3,6 +3,9 @@ extends ./templates/header.pug
 block title
   title Posts | Blogger
 
+block navigation
+  include ./templates/navigation.pug
+
 block content
   .container
     .row
@@ -17,7 +20,8 @@ block content
                   li
                     h3
                       a(href="/posts/" + post.title)= post.title
-                    p.muted= prettyDate(post.datePosted) + ' by ' + post._author.username
+                    p.muted= prettyDate(post.datePosted) + ' by '
+                      a(href="/users/" + post._author.username)=  post._author.username
                     p= cutPost(post.content, 140)
             - }
           .col-xs-12.col-md-4

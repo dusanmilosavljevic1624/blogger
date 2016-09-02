@@ -20,10 +20,16 @@ router.post('/new', (req, res) => {
     content: req.body.content
   });
 
-  post.save(post, (err) => {
+  post.save(post, (err, post) => {
     if(err) {
-      return err;
+      throw err;
     }
+    User.update({'_id': req.user.id}, {'$push': {posts: post._id}}, (err) => {
+      if(err) {
+        throw err;
+      }
+
+    })
   });
   res.redirect('/posts');
 });
