@@ -1,0 +1,31 @@
+extends ./templates/header.pug
+
+block title
+  title Posts | Blogger
+
+block content
+  .container
+    .row
+      .col-xs-12
+        h1 Blogger
+        h2.lead Blog powered by mongo, express and node
+        .row
+          .col-xs-12.col-md-8
+            - if (posts) {
+              ul
+                each post in posts
+                  li
+                    h3
+                      a(href="/posts/" + post.title)= post.title
+                    p.muted= prettyDate(post.datePosted) + ' by ' + post._author.username
+                    p= cutPost(post.content, 140)
+            - }
+          .col-xs-12.col-md-4
+            form(action="posts/new", method="post")
+              .form-group
+                label(for="title") Title
+                input.form-control(type="text", name="title", id="title")
+              .form-group
+                label(for="content") Content
+                textarea.form-control(name="content", id="content")
+              input.btn.btn-primary(type="submit", value="Post")
