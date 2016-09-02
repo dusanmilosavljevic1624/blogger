@@ -1,0 +1,10 @@
+extends ./templates/header.pug
+block title
+  title Profile | Blogger
+
+block content
+  .container
+    .row
+      .col-xs-12
+        h1 Welcome to the profile page
+        p #{user.username}
