@@ -7,8 +7,16 @@ router.get('/', (req, res) => {
   Post.find({})
       .populate('_author')
       .exec((err, posts) => {
-        console.log(posts);
         res.render('posts', {posts: posts});
+      });
+});
+
+router.get('/:title', (req, res) => {
+  Post.findOne({'title': req.params.title})
+      .populate('_author')
+      .exec((err, post) => {
+        console.log(post);
+        res.render('post', {post: post});
       });
 });
 

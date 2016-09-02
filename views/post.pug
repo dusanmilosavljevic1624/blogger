@@ -1,0 +1,11 @@
+extends ./templates/header.pug
+
+block title
+  title= post.title + ' | Blogger'
+
+block navigation
+  include ./templates/navigation.pug
+
+block content
+  .container
+    h1= post.title
