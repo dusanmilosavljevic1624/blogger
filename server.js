@@ -20,8 +20,7 @@ app.use(morgan('dev')); // Log every request to the console
 app.use(cookieParser()); // Read cookies
 app.use(bodyParser()); // Get information from HTML forms
 
-app.set('view engine', 'pug'); // Setting up pug for templateing
-
+app.set('view engine', 'pug'); // Setting up pug for templating
 
 app.use(session({secret: 'thisisastringwhichishardtoguess'})); // session secret
 app.use(passport.initialize());

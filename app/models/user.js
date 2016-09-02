@@ -6,12 +6,13 @@ var userSchema = mongoose.Schema({
   password: String
 });
 
-userSchema.methods.generateHash = (password) => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+userSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-userSchema.methods.validPassword = (password) => {
-  return bcrypt.compareSync(password, this.password);
+// checking if password is valid
+userSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
 };
 
 module.exports = mongoose.model('User', userSchema);
